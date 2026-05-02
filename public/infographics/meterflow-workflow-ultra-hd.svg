@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3840" height="2160" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">METERFLOW - API USAGE &amp; BILLING WORKFLOW</title>
+  <desc id="desc">Complete API lifecycle after user authentication with 8-step flow, platform integrations, and technology stack.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#bae6fd" />
+    </linearGradient>
+
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ede9fe" />
+      <stop offset="100%" stop-color="#ddd6fe" />
+    </linearGradient>
+
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dcfce7" />
+      <stop offset="100%" stop-color="#bbf7d0" />
+    </linearGradient>
+
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffedd5" />
+      <stop offset="100%" stop-color="#fed7aa" />
+    </linearGradient>
+
+    <filter id="softShadow" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#334155" />
+    </marker>
+
+    <style><![CDATA[
+      .h1 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 70px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .h2 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 34px; font-weight: 600; fill: #334155; }
+      .cardTitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #0f172a; }
+      .cardText { font-family: 'Segoe UI', Arial, sans-serif; font-size: 22px; font-weight: 500; fill: #1f2937; }
+      .smallText { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: 600; fill: #475569; }
+      .stackText { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: 700; fill: #0f172a; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #1e293b; }
+      .num { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: 800; fill: #0f172a; }
+      .line { stroke: #334155; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .lineDash { stroke: #64748b; stroke-width: 3; stroke-dasharray: 10 8; fill: none; marker-end: url(#arrow); }
+      .cardStrokeBlue { stroke: #0284c7; stroke-width: 2.5; }
+      .cardStrokePurple { stroke: #7c3aed; stroke-width: 2.5; }
+      .cardStrokeGreen { stroke: #16a34a; stroke-width: 2.5; }
+      .cardStrokeOrange { stroke: #f97316; stroke-width: 2.5; }
+      .cardStrokeNeutral { stroke: #94a3b8; stroke-width: 2; }
+    ]]></style>
+  </defs>
+
+  <rect x="0" y="0" width="3840" height="2160" fill="url(#bg)" />
+
+  <text x="1920" y="120" text-anchor="middle" class="h1">METERFLOW - API USAGE &amp; BILLING WORKFLOW</text>
+  <text x="1920" y="175" text-anchor="middle" class="h2">Complete API Lifecycle After User Authentication</text>
+
+  <!-- STEP CARDS ROW 1 -->
+  <g transform="translate(120,260)">
+    <rect x="0" y="0" rx="26" ry="26" width="830" height="300" fill="url(#blue)" class="cardStrokeBlue" filter="url(#softShadow)"/>
+    <circle cx="58" cy="54" r="28" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="58" y="62" text-anchor="middle" class="num">1</text>
+    <text x="105" y="65" class="cardTitle">Create API</text>
+    <text x="45" y="118" class="cardText">- Configure API name and base URL</text>
+    <text x="45" y="154" class="cardText">- Define pricing and rate limits</text>
+    <text x="45" y="190" class="cardText">- Save API in developer dashboard</text>
+    <rect x="620" y="38" rx="12" ry="12" width="170" height="48" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="705" y="69" text-anchor="middle" class="label">API CONFIG</text>
+  </g>
+
+  <g transform="translate(1020,260)">
+    <rect x="0" y="0" rx="26" ry="26" width="830" height="300" fill="url(#purple)" class="cardStrokePurple" filter="url(#softShadow)"/>
+    <circle cx="58" cy="54" r="28" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="58" y="62" text-anchor="middle" class="num">2</text>
+    <text x="105" y="65" class="cardTitle">Generate Unique API Key</text>
+    <text x="45" y="118" class="cardText">- Secure key generated automatically</text>
+    <text x="45" y="154" class="cardText">- Encrypted key assignment to consumers</text>
+    <text x="45" y="190" class="cardText">- Key status managed by owner</text>
+    <rect x="620" y="38" rx="12" ry="12" width="170" height="48" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="705" y="69" text-anchor="middle" class="label">KEY + SECURITY</text>
+  </g>
+
+  <g transform="translate(1920,260)">
+    <rect x="0" y="0" rx="26" ry="26" width="830" height="300" fill="url(#blue)" class="cardStrokeBlue" filter="url(#softShadow)"/>
+    <circle cx="58" cy="54" r="28" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="58" y="62" text-anchor="middle" class="num">3</text>
+    <text x="105" y="65" class="cardTitle">End Users Access API</text>
+    <text x="45" y="118" class="cardText">- Web, Mobile, and Server clients</text>
+    <text x="45" y="154" class="cardText">- Requests sent with API keys</text>
+    <text x="45" y="190" class="cardText">- Traffic routed into MeterFlow gateway</text>
+    <rect x="620" y="38" rx="12" ry="12" width="170" height="48" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="705" y="69" text-anchor="middle" class="label">CLIENT TRAFFIC</text>
+  </g>
+
+  <!-- STEP CARD CORE -->
+  <g transform="translate(120,640)">
+    <rect x="0" y="0" rx="28" ry="28" width="1260" height="400" fill="url(#purple)" class="cardStrokePurple" filter="url(#softShadow)"/>
+    <circle cx="58" cy="58" r="30" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="58" y="67" text-anchor="middle" class="num">4</text>
+    <text x="105" y="70" class="cardTitle">API Gateway Processing (Core Layer)</text>
+    <text x="50" y="134" class="cardText">- Validate API key</text>
+    <text x="50" y="174" class="cardText">- Apply rate limiting</text>
+    <text x="50" y="214" class="cardText">- Authenticate request</text>
+    <text x="50" y="254" class="cardText">- Forward to target API</text>
+    <text x="50" y="294" class="cardText">- Log request metadata</text>
+
+    <rect x="860" y="70" rx="14" ry="14" width="330" height="70" fill="#ffffff" class="cardStrokeNeutral"/>
+    <text x="1025" y="114" text-anchor="middle" class="smallText">Gateway Decision Engine</text>
+
+    <rect x="860" y="165" rx="14" ry="14" width="330" height="70" fill="#ffffff" class="cardStrokeNeutral"/>
+    <text x="1025" y="209" text-anchor="middle" class="smallText">Auth + Policy + Routing</text>
+
+    <rect x="860" y="260" rx="14" ry="14" width="330" height="70" fill="#ffffff" class="cardStrokeNeutral"/>
+    <text x="1025" y="304" text-anchor="middle" class="smallText">Metadata + Event Hooks</text>
+  </g>
+
+  <!-- STEP CARDS RIGHT COLUMN -->
+  <g transform="translate(1450,640)">
+    <rect x="0" y="0" rx="24" ry="24" width="620" height="300" fill="url(#green)" class="cardStrokeGreen" filter="url(#softShadow)"/>
+    <circle cx="50" cy="52" r="26" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="50" y="60" text-anchor="middle" class="num">5</text>
+    <text x="92" y="62" class="cardTitle">Request Logging &amp; Usage Tracking</text>
+    <text x="35" y="114" class="cardText">- API key</text>
+    <text x="35" y="146" class="cardText">- Endpoint</text>
+    <text x="35" y="178" class="cardText">- Timestamp</text>
+    <text x="35" y="210" class="cardText">- Status code</text>
+    <text x="35" y="242" class="cardText">- Latency</text>
+  </g>
+
+  <g transform="translate(2110,640)">
+    <rect x="0" y="0" rx="24" ry="24" width="640" height="300" fill="url(#blue)" class="cardStrokeBlue" filter="url(#softShadow)"/>
+    <circle cx="50" cy="52" r="26" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+    <text x="50" y="60" text-anchor="middle" class="num">6</text>
+    <text x="92" y="62" class="cardTitle">Real-Time Analytics Dashboard</text>
+    <text x="35" y="114" class="cardText">- Live counters and active keys</text>
+    <text x="35" y="148" class="cardText">- Error-rate and latency charts</text>
+    <text x="35" y="182" class="cardText">- Monitoring widgets and alerts</text>
+    <text x="35" y="216" class="cardText">- Instant usage visibility</text>
+  </g>
+
+  <g transform="translate(1450,980)">
+    <rect x="0" y="0" rx="24" ry="24" width="620" height="300" fill="url(#green)" class="cardStrokeGreen" filter="url(#softShadow)"/>
+    <circle cx="50" cy="52" r="26" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="50" y="60" text-anchor="middle" class="num">7</text>
+    <text x="92" y="62" class="cardTitle">Billing Engine Calculation</text>
+    <text x="35" y="114" class="cardText">- Usage-based charge calculation</text>
+    <text x="35" y="148" class="cardText">- Subscription plan pricing rules</text>
+    <text x="35" y="182" class="cardText">- Automated invoice generation</text>
+    <text x="35" y="216" class="cardText">- Billable event consolidation</text>
+  </g>
+
+  <g transform="translate(2110,980)">
+    <rect x="0" y="0" rx="24" ry="24" width="640" height="300" fill="url(#orange)" class="cardStrokeOrange" filter="url(#softShadow)"/>
+    <circle cx="50" cy="52" r="26" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+    <text x="50" y="60" text-anchor="middle" class="num">8</text>
+    <text x="92" y="62" class="cardTitle">Payment Processing</text>
+    <text x="35" y="114" class="cardText">- Stripe or Razorpay checkout</text>
+    <text x="35" y="148" class="cardText">- Payment confirmation event</text>
+    <text x="35" y="182" class="cardText">- Invoice finalized and stored</text>
+    <text x="35" y="216" class="cardText">- Customer notified</text>
+  </g>
+
+  <!-- Platform Components -->
+  <g transform="translate(120,1090)">
+    <rect x="0" y="0" rx="24" ry="24" width="1260" height="370" fill="#ffffff" class="cardStrokeNeutral" filter="url(#softShadow)"/>
+    <text x="42" y="60" class="cardTitle">Additional Platform Components</text>
+
+    <rect x="40" y="95" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="64" y="138" class="smallText">Socket.io - Real-time analytics and live updates</text>
+
+    <rect x="40" y="180" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="64" y="223" class="smallText">BullMQ - Background billing and invoice jobs</text>
+
+    <rect x="40" y="265" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="64" y="308" class="smallText">Webhooks - Alerts and payment notifications</text>
+
+    <rect x="650" y="95" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="674" y="138" class="smallText">Redis - Caching and gateway rate limiting</text>
+
+    <rect x="650" y="180" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="674" y="223" class="smallText">MongoDB - Usage log and billing records</text>
+
+    <rect x="650" y="265" rx="12" ry="12" width="560" height="68" fill="#f1f5f9" class="cardStrokeNeutral"/>
+    <text x="674" y="308" class="smallText">Express Gateway - Secure routing and policies</text>
+  </g>
+
+  <!-- Arrows main flow -->
+  <path d="M950 410 L1020 410" class="line" />
+  <path d="M1850 410 L1920 410" class="line" />
+  <path d="M2750 410 L2750 600 L1380 600 L1380 730" class="line" />
+  <path d="M1380 840 L1450 840" class="line" />
+  <path d="M2070 790 L2110 790" class="line" />
+  <path d="M2430 940 L2430 980" class="line" />
+  <path d="M2070 1130 L2110 1130" class="line" />
+
+  <!-- Integration arrows -->
+  <path d="M1260 1290 L1450 1128" class="lineDash" />
+  <path d="M1260 1230 L1450 790" class="lineDash" />
+  <path d="M1260 1160 L2110 790" class="lineDash" />
+  <path d="M1260 1360 L2110 1128" class="lineDash" />
+
+  <!-- Bottom stack -->
+  <g transform="translate(120,1545)">
+    <rect x="0" y="0" rx="24" ry="24" width="3630" height="450" fill="#ffffff" class="cardStrokeNeutral" filter="url(#softShadow)"/>
+    <text x="40" y="68" class="cardTitle">Technology Stack</text>
+
+    <g transform="translate(40,108)">
+      <rect x="0" y="0" rx="12" ry="12" width="350" height="84" fill="#e0f2fe" class="cardStrokeBlue"/>
+      <text x="175" y="53" text-anchor="middle" class="stackText">React</text>
+
+      <rect x="390" y="0" rx="12" ry="12" width="350" height="84" fill="#ede9fe" class="cardStrokePurple"/>
+      <text x="565" y="53" text-anchor="middle" class="stackText">Node.js</text>
+
+      <rect x="780" y="0" rx="12" ry="12" width="350" height="84" fill="#dcfce7" class="cardStrokeGreen"/>
+      <text x="955" y="53" text-anchor="middle" class="stackText">Express</text>
+
+      <rect x="1170" y="0" rx="12" ry="12" width="350" height="84" fill="#e0f2fe" class="cardStrokeBlue"/>
+      <text x="1345" y="53" text-anchor="middle" class="stackText">MongoDB</text>
+
+      <rect x="1560" y="0" rx="12" ry="12" width="350" height="84" fill="#ede9fe" class="cardStrokePurple"/>
+      <text x="1735" y="53" text-anchor="middle" class="stackText">Redis</text>
+
+      <rect x="1950" y="0" rx="12" ry="12" width="350" height="84" fill="#dcfce7" class="cardStrokeGreen"/>
+      <text x="2125" y="53" text-anchor="middle" class="stackText">BullMQ</text>
+
+      <rect x="2340" y="0" rx="12" ry="12" width="350" height="84" fill="#e0f2fe" class="cardStrokeBlue"/>
+      <text x="2515" y="53" text-anchor="middle" class="stackText">Socket.io</text>
+
+      <rect x="2730" y="0" rx="12" ry="12" width="350" height="84" fill="#ffedd5" class="cardStrokeOrange"/>
+      <text x="2905" y="53" text-anchor="middle" class="stackText">Stripe</text>
+
+      <rect x="3120" y="0" rx="12" ry="12" width="350" height="84" fill="#ffedd5" class="cardStrokeOrange"/>
+      <text x="3295" y="53" text-anchor="middle" class="stackText">Razorpay</text>
+    </g>
+
+    <text x="40" y="250" class="smallText">Design intent: modern SaaS workflow infographic, enterprise architecture layout, portfolio/research-ready visual hierarchy.</text>
+    <text x="40" y="290" class="smallText">Export note: this SVG uses a 3840x2160 viewport for Ultra HD output while remaining fully scalable vector graphics.</text>
+  </g>
+</svg>
