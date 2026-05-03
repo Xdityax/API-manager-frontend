@@ -52,9 +52,21 @@ function SignInPage() {
 
     try {
       const response = await signIn({ email: form.email, password: form.password })
-      navigate(getDashboardPathForRole(response?.user?.role), { replace: true })
+      
+      if (!response?.user?.role) {
+        setError('Invalid user data. Please try again.')
+        setLoading(false)
+        return
+      }
+      
+      const dashboardPath = getDashboardPathForRole(response.user.role)
+      navigate(dashboardPath, { replace: true })
     } catch (submitError) {
-      setError(submitError?.response?.data?.message || 'Authentication failed. Please try again.')
+      const errorMsg = submitError?.response?.data?.message || 
+                       submitError?.message || 
+                       'Authentication failed. Please check your email and password.'
+      setError(errorMsg)
+      console.error('Login error:', submitError)
     } finally {
       setLoading(false)
     }
@@ -125,6 +137,7 @@ function SignUpPage() {
     email: '',
     password: '',
     confirmPassword: '',
+    role: 'consumer',
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -154,11 +167,24 @@ function SignUpPage() {
     setLoading(true)
 
     try {
-      await signUp({ name: form.name, email: form.email, password: form.password })
-      window.alert('Account created successfully')
-      navigate('/signin', { replace: true })
+      const response = await signUp({ name: form.name, email: form.email, password: form.password, role: form.role })
+      
+      if (response?.token && response?.user) {
+        // Auto-login after signup
+        const { persistAuth } = require('../context/AuthContext.jsx')
+        // Note: can't use persistAuth directly here, so we'll redirect to signin
+        window.alert('Account created successfully! Please log in.')
+        navigate('/signin', { replace: true })
+      } else {
+        window.alert('Account created successfully! Please log in.')
+        navigate('/signin', { replace: true })
+      }
     } catch (submitError) {
-      setError(submitError?.response?.data?.message || 'Authentication failed. Please try again.')
+      const errorMsg = submitError?.response?.data?.message || 
+                       submitError?.message ||
+                       'Account creation failed. Please try again.'
+      setError(errorMsg)
+      console.error('Signup error:', submitError)
     } finally {
       setLoading(false)
     }
@@ -194,6 +220,19 @@ function SignUpPage() {
             autoComplete="email"
             required
           />
+        </label>
+
+        <label className="field">
+          <span>Account Type</span>
+          <select
+            name="role"
+            value={form.role}
+            onChange={onChange}
+            required
+          >
+            <option value="consumer">Consumer (Use APIs)</option>
+            <option value="owner">Provider (Create APIs)</option>
+          </select>
         </label>
 
         <div className="field">

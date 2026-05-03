@@ -1329,7 +1329,9 @@
   justify-content: center;
 }
 
-.table-actions button:hover {
+.table-actions button:first-child {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.3);
 }
 }
 

@@ -205,7 +205,10 @@ export default function ConsumerDashboardPage() {
   const [notice, setNotice] = useState('')
 
   const loadConsumerData = async () => {
-    if (!token) return
+    if (!token) {
+      console.warn('No token available for consumer dashboard')
+      return
+    }
 
     try {
       setCatalogError('')
@@ -225,6 +228,7 @@ export default function ConsumerDashboardPage() {
           setSelectedApiId(firstCatalogApiId)
         }
       } else {
+        console.error('Catalog error:', catalogResponse.reason)
         setApiCatalog([])
         setCatalogError(catalogResponse.reason?.response?.data?.message || 'Unable to load API catalog')
       }
@@ -232,9 +236,11 @@ export default function ConsumerDashboardPage() {
       if (summaryResponse.status === 'fulfilled') {
         setConsumerSummary(summaryResponse.value?.data || null)
       } else {
+        console.error('Summary error:', summaryResponse.reason)
         setConsumerSummary(null)
       }
     } catch (requestError) {
+      console.error('Load consumer data error:', requestError)
       setCatalogError(requestError?.response?.data?.message || 'Unable to load dashboard data')
     }
   }

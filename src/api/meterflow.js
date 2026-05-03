@@ -197,52 +197,29 @@ const buildConsumerSummaryFallback = async (token) => {
     }
   }
 
-  const overview = await getDashboardOverview(token)
-  const overviewData = overview?.data || overview || {}
-  const apis = Array.isArray(overviewData.apis) ? overviewData.apis : []
-  const selectedApi = apis[0] || null
-
-  const [usageResult, billingResult] = selectedApi
-    ? await Promise.allSettled([
-        getUsageSummary(token, selectedApi._id),
-        getBillingSummary(token, selectedApi._id),
-      ])
-    : [null, null]
-
-  const usage = usageResult?.status === 'fulfilled' ? usageResult.value?.data || usageResult.value || {} : {}
-  const billing = billingResult?.status === 'fulfilled' ? billingResult.value?.data || billingResult.value || {} : {}
+  // Fallback when API is unavailable - return minimal structure
   const activity = readStoredActivity()
-
-  const totalRequests = Number(overviewData.summary?.totalRequests || usage.totalRequests || 0)
-  const avgLatency = Number(overviewData.summary?.avgLatency || usage.avgLatency || 0)
-  const errorRate = Number(overviewData.summary?.errorRate || 0)
-  // Estimated revenue calculation: increase by ₹2 for every request made by the consumer
-  const currentUsageCost = Number(billing.amount || overviewData.summary?.estimatedRevenue || 0) || Number(totalRequests * 2)
-
-  const normalizedApis = apis.map((api, index) => normalizeApi(api, index, usage, billing))
-  const selectedApiName = selectedApi?.name || 'MeterFlow API'
-
   return {
-    plan: totalRequests > 0 ? 'pro' : 'free',
-    activeSubscriptions: normalizedApis.length,
-    requestsThisMonth: totalRequests,
-    currentUsageCost,
-    freeCredits: Math.max(0, 1000 - Math.round(totalRequests * 0.35)),
-    activeApiKeys: Number(overviewData.summary?.activeApiKeys || 0),
-    avgLatency,
+    plan: 'free',
+    activeSubscriptions: 0,
+    requestsThisMonth: 0,
+    currentUsageCost: 0,
+    freeCredits: 0,
+    activeApiKeys: 0,
+    avgLatency: 0,
     charts: {
-      dailyUsage: buildDailyUsage(totalRequests),
-      monthlyCost: buildMonthlyCost(currentUsageCost),
-      responseTime: buildResponseTime(avgLatency),
-      successErrorMix: buildSuccessMix(totalRequests, errorRate),
+      dailyUsage: [],
+      monthlyCost: [],
+      responseTime: [],
+      successErrorMix: [],
     },
-    subscriptions: normalizedApis,
-    recentRequests: buildRequests(activity, selectedApiName),
-    invoices: buildInvoices(currentUsageCost),
-    usageAlerts: buildAlerts({ totalRequests, avgLatency, errorRate }),
+    subscriptions: [],
+    recentRequests: buildRequests(activity, 'MeterFlow API'),
+    invoices: buildInvoices(0),
+    usageAlerts: buildAlerts({ totalRequests: 0, avgLatency: 0, errorRate: 0 }),
     recentActivity: activity,
     supportOpenTickets: activity.filter((item) => item.type === 'support_ticket_created').length,
-    supportResolvedThisWeek: activity.filter((item) => item.type === 'support_ticket_created').length ? 1 : 0,
+    supportResolvedThisWeek: 0,
   }
 }
 

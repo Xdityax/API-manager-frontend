@@ -53,12 +53,15 @@ export function AuthProvider({ children }) {
 
   const signIn = async ({ email, password }) => {
     const response = await loginUser({ email, password })
+    if (!response?.token || !response?.user) {
+      throw new Error('Invalid login response from server')
+    }
     persistAuth(response.token, response.user)
     return response
   }
 
-  const signUp = async ({ name, email, password }) => {
-    return registerUser({ name, email, password })
+  const signUp = async ({ name, email, password, role }) => {
+    return registerUser({ name, email, password, role })
   }
 
   const signOut = () => {
