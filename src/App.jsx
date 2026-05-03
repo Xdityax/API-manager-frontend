@@ -167,18 +167,10 @@ function SignUpPage() {
     setLoading(true)
 
     try {
-      const response = await signUp({ name: form.name, email: form.email, password: form.password, role: form.role })
-      
-      if (response?.token && response?.user) {
-        // Auto-login after signup
-        const { persistAuth } = require('../context/AuthContext.jsx')
-        // Note: can't use persistAuth directly here, so we'll redirect to signin
-        window.alert('Account created successfully! Please log in.')
-        navigate('/signin', { replace: true })
-      } else {
-        window.alert('Account created successfully! Please log in.')
-        navigate('/signin', { replace: true })
-      }
+      await signUp({ name: form.name, email: form.email, password: form.password, role: form.role })
+
+      window.alert('Account created successfully! Please log in.')
+      navigate('/signin', { replace: true })
     } catch (submitError) {
       const errorMsg = submitError?.response?.data?.message || 
                        submitError?.message ||
