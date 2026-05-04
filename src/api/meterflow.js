@@ -230,6 +230,11 @@ const buildConsumerSummary = async (token) => {
     return fallback
   }
 
+  const preferFallbackArray = (primary, secondary) => {
+    if (Array.isArray(primary) && primary.length) return primary
+    return Array.isArray(secondary) ? secondary : []
+  }
+
   try {
     const { data } = await api.get('/apis/consumer/overview', withAuth(token))
     const consumerData = data?.data || data || {}
@@ -245,10 +250,10 @@ const buildConsumerSummary = async (token) => {
       currentUsageCost: consumerData.currentUsageCost ?? fallback.currentUsageCost,
       charts: consumerData.charts ?? fallback.charts,
       subscriptions: consumerData.subscriptions ?? fallback.subscriptions,
-      recentRequests: consumerData.recentRequests ?? fallback.recentRequests,
+      recentRequests: preferFallbackArray(consumerData.recentRequests, fallback.recentRequests),
       invoices: consumerData.invoices ?? fallback.invoices,
       usageAlerts: consumerData.usageAlerts ?? fallback.usageAlerts,
-      recentActivity: consumerData.recentActivity ?? fallback.recentActivity,
+      recentActivity: preferFallbackArray(consumerData.recentActivity, fallback.recentActivity),
       supportOpenTickets: consumerData.supportOpenTickets ?? fallback.supportOpenTickets,
       supportResolvedThisWeek: consumerData.supportResolvedThisWeek ?? fallback.supportResolvedThisWeek,
     }

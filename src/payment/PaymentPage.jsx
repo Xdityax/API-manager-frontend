@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowLeft, CheckCircle2, CreditCard, ShieldCheck, Sparkles } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import { QRCodeSVG } from 'qrcode.react'
 import { useAuth } from '../context/AuthContext.jsx'
-import { createCheckoutSession, getPaymentDetails, verifyRazorpayPayment } from '../api/meterflow.js'
+import { createCheckoutSession, verifyRazorpayPayment } from '../api/meterflow.js'
 
 const PLAN_AMOUNT = 1
 
@@ -27,32 +26,6 @@ export default function PaymentPage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [paymentDetails, setPaymentDetails] = useState(null)
-  const [detailsLoading, setDetailsLoading] = useState(true)
-
-  useEffect(() => {
-    const loadDetails = async () => {
-      if (!token) {
-        setDetailsLoading(false)
-        return
-      }
-
-      try {
-        const response = await getPaymentDetails(token)
-        setPaymentDetails(response?.data || response)
-      } catch (requestError) {
-        setError(requestError?.response?.data?.message || requestError.message || 'Unable to load payment details.')
-      } finally {
-        setDetailsLoading(false)
-      }
-    }
-
-    loadDetails()
-  }, [token])
-
-  const upiLink = useMemo(() => {
-    return paymentDetails?.upiLink || ''
-  }, [paymentDetails])
 
   const handlePayNow = async () => {
     if (!token || loading) {
@@ -128,7 +101,7 @@ export default function PaymentPage() {
 
           <h1>Upgrade to MeterFlow Pro</h1>
           <p className="payment-copy">
-            Review the subscription details below, scan the QR if you want UPI, or continue to Razorpay secure checkout.
+            Complete your subscription with secure Razorpay checkout.
           </p>
         </div>
 
@@ -162,46 +135,6 @@ export default function PaymentPage() {
                 <strong>{user?.email || 'Signed-in user'}</strong>
               </div>
             </div>
-          </article>
-
-          <article className="payment-card payment-qr-card">
-            <div className="payment-card-header">
-              <div>
-                <span className="payment-kicker">UPI QR</span>
-                <h2>Scan to pay ₹{PLAN_AMOUNT}</h2>
-              </div>
-            </div>
-
-            {detailsLoading ? (
-              <p className="payment-copy small">Loading payment details...</p>
-            ) : upiLink ? (
-              <div className="payment-qr-wrap">
-                <div className="payment-qr-code">
-                  <QRCodeSVG value={upiLink} size={210} includeMargin />
-                </div>
-
-                <div className="payment-qr-details">
-                  <div>
-                    <span>Payee name</span>
-                    <strong>{paymentDetails?.payeeName || 'MeterFlow'}</strong>
-                  </div>
-
-                  <div>
-                    <span>UPI ID</span>
-                    <strong>{paymentDetails?.UPI_ID}</strong>
-                  </div>
-
-                  <div>
-                    <span>Amount</span>
-                    <strong>₹{PLAN_AMOUNT}</strong>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <p className="payment-copy small">
-                Set UPI_ID and UPI_ACCOUNT_NAME in server/.env to show a usable QR.
-              </p>
-            )}
           </article>
 
           <article className="payment-card payment-action-card">
